@@ -47,3 +47,7 @@
     width: 200px; 
   }
 }
+.react-player{
+  height:77vh !important;
+  width: 100% !important;
+}

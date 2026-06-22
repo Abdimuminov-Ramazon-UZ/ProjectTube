@@ -1,5 +1,6 @@
 import { CheckCircle } from "@mui/icons-material";
 import { Box, CardContent, CardMedia, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const ChannelCard = ({ video }) => {
   return (
@@ -15,44 +16,46 @@ const ChannelCard = ({ video }) => {
         margin: "auto",
       }}
     >
-      <CardContent
-        sx={{
-          dicplay: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          textAlign: "center",
-        }}
-      >
-        <CardMedia
-          img={video?.snippet.thumbnails.default.url}
+      <Link to={`/channel/${video?.id?.channelId}`}>
+        <CardContent
           sx={{
-            borderRadius: "50%",
-            height: "180px",
-            width: "180px",
-            mb: "2",
-            border: "1px solid red",
+            dicplay: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            textAlign: "center",
           }}
-        ></CardMedia>
-        <Typography variant="h6">
-          {video?.snippet.title}
-          <CheckCircle></CheckCircle>
-        </Typography>
-        <Typography>
-          {video.statistics.subscribeCount && (
-            <Typography
-              sx={{
-                fontSize: "15px",
-                fontWeight: "500",
-                color: "gray",
-              }}
-            >
-              {parseInt(
-                video.statistics.subscribeCount.toLocaleString("en-US"),
-              )}
-            </Typography>
-          )}
-        </Typography>
-      </CardContent>
+        >
+          <CardMedia
+            img={video?.snippet.thumbnails.default.url}
+            sx={{
+              borderRadius: "50%",
+              height: "180px",
+              width: "180px",
+              mb: "2",
+              border: "1px solid red",
+            }}
+          ></CardMedia>
+          <Typography variant="h6">
+            {video?.snippet.title}
+            <CheckCircle></CheckCircle>
+          </Typography>
+          <Typography>
+            {video.statistics.subscribeCount && (
+              <Typography
+                sx={{
+                  fontSize: "15px",
+                  fontWeight: "500",
+                  color: "gray",
+                }}
+              >
+                {parseInt(
+                  video.statistics.subscribeCount.toLocaleString("en-US"),
+                )}
+              </Typography>
+            )}
+          </Typography>
+        </CardContent>
+      </Link>
     </Box>
   );
 };

@@ -14,7 +14,7 @@ const Headpage = () => {
       try {
         const data = await ApiService.fetching(
           `search?q=${selectedCategory.toLocaleLowerCase()}&part=snippet`,
-        ).then((data) => setVideos(data));
+        ).then((data) => (data ? setVideos(data) : setVideos([])));
       } catch (error) {
         console.log(error);
       }

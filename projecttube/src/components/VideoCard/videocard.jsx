@@ -7,6 +7,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 const VideoCard = ({ video }) => {
   console.log(video);
   return (
@@ -20,10 +21,12 @@ const VideoCard = ({ video }) => {
         margin: "12px",
       }}
     >
-      <CardMedia
-        image={video?.snippet?.thumbnails?.high?.url}
-        sx={{ width: "360px", height: "180px" }}
-      ></CardMedia>
+      <Link to={`/video/${video.id.videoId}`}>
+        <CardMedia
+          image={video?.snippet?.thumbnails?.high?.url}
+          sx={{ width: "360px", height: "180px" }}
+        ></CardMedia>
+      </Link>
       <CardContent
         sx={{
           background: { xs: "black", sm: "red", md: "pink" },
@@ -31,31 +34,37 @@ const VideoCard = ({ video }) => {
           position: "relative",
         }}
       >
-        <Typography sx={{ marginY: "5px", opacity: 0 }}>2 days ago</Typography>
-        <Typography variant={"subtitle1"} sx={{ fontWeight: "bold" }}>
-          {video.snippet.title.size}
-        </Typography>
-        <Typography sx={{ marginY: "5px", opacity: 0 }}>
-          five minutes ago
-        </Typography>
-        <Typography variant={"subtitle2"} sx={{ opacity: 0.6 }}>
-          {video.snippet.description.slice(0, 50)}
-        </Typography>
-        <Stack
-          sx={{
-            flexDirection: "row",
-            position: "absolute",
-            bottom: "10px",
-            alignItems: "center",
-            gap: "5px",
-          }}
-        >
-          <Avatar src={video.snippet.thumbnails.high.url}></Avatar>
-          <Typography variant={"subtitle2"}>
-            {video?.snippet.channelTitle}
-            <CheckCircle />
+        <Link to={`/video/${video.id.videoId}`}>
+          <Typography sx={{ marginY: "5px", opacity: 0 }}>
+            2 days ago
           </Typography>
-        </Stack>
+          <Typography variant={"subtitle1"} sx={{ fontWeight: "bold" }}>
+            {video.snippet.title.size}
+          </Typography>
+          <Typography sx={{ marginY: "5px", opacity: 0 }}>
+            five minutes ago
+          </Typography>
+          <Typography variant={"subtitle2"} sx={{ opacity: 0.6 }}>
+            {video.snippet.description.slice(0, 50)}
+          </Typography>
+        </Link>
+        <Link to={`/channel/${video.id.channelId}`}>
+          <Stack
+            sx={{
+              flexDirection: "row",
+              position: "absolute",
+              bottom: "10px",
+              alignItems: "center",
+              gap: "5px",
+            }}
+          >
+            <Avatar src={video.snippet.thumbnails.high.url}></Avatar>
+            <Typography variant={"subtitle2"}>
+              {video?.snippet.channelTitle}
+              <CheckCircle />
+            </Typography>
+          </Stack>
+        </Link>
       </CardContent>
     </Card>
   );

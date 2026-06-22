@@ -16,13 +16,13 @@ const options = {
 };
 
 export const ApiService = {
-  async fetching(url) {
-    const response = await axios.get(`${BASE_URL}/${url}`, options);
-    // console.log(response);
-    const arr = Object.entries(response.data.items);
-    console.log(arr);
-    return arr;
-  },
+  // async fetching(url) {
+  //   const response = await axios.get(`${BASE_URL}/${url}`, options);
+  //   // console.log(response);
+  //   const arr = Object.entries(response.data.items);
+  //   console.log(arr);
+  //   return arr;
+  // },
 };
 
 // try {
